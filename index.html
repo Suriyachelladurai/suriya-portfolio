@@ -1,236 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suriya C | Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suriya C | Python Fresher</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg-dark: #020617;
-      --bg-light: #0f172a;
-      --primary: #38bdf8;
-      --secondary: #6366f1;
-      --accent: #22c55e;
-      --text-main: #e5e7eb;
-      --text-muted: #94a3b8;
-    }
+<style>
+:root{
+  --bg1:#020617;
+  --bg2:#0f172a;
+  --primary:#38bdf8;
+  --secondary:#6366f1;
+  --accent:#22c55e;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-      scroll-behavior: smooth;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
 
-    body {
-      background: linear-gradient(120deg, var(--bg-dark), var(--bg-light));
-      color: var(--text-main);
-      line-height: 1.7;
-    }
+body{
+  background:linear-gradient(120deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-    /* HEADER */
-    header {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: radial-gradient(circle at top, #1e40af, #020617);
-      gap: 20px;
-      animation: fadeIn 1.5s ease;
-    }
+/* FLOATING BACKGROUND */
+.bg span{
+  position:fixed;
+  width:20px;
+  height:20px;
+  background:rgba(56,189,248,0.2);
+  animation:float 20s linear infinite;
+  border-radius:50%;
+}
+@keyframes float{
+  from{transform:translateY(100vh) scale(0)}
+  to{transform:translateY(-10vh) scale(1)}
+}
 
-    .profile-pic {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid transparent;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      padding: 4px;
-      box-shadow: 0 0 40px rgba(56,189,248,0.6);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
+/* HEADER */
+header{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+}
 
-    .profile-pic:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 60px rgba(99,102,241,0.8);
-    }
+/* PROFILE RING */
+.profile-wrap{
+  position:relative;
+  width:190px;
+  height:190px;
+  margin-bottom:20px;
+}
+.profile-wrap::before{
+  content:'';
+  position:absolute;
+  inset:-6px;
+  border-radius:50%;
+  background:conic-gradient(var(--primary),var(--secondary),var(--accent),var(--primary));
+  animation:spin 6s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-    header h1 {
-      font-size: 3.2rem;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: slideDown 1.2s ease;
-    }
+.profile-wrap img{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  position:relative;
+  z-index:1;
+  background:#020617;
+}
 
-    header p {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-    }
+h1{
+  font-size:3.2rem;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 
-    .btn {
-      margin-top: 30px;
-      padding: 12px 28px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      color: #020617;
-      border-radius: 30px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.4s;
-    }
+/* TYPEWRITER */
+.type{
+  font-size:1.2rem;
+  color:var(--muted);
+  height:30px;
+  margin-top:10px;
+}
 
-    .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 30px rgba(56,189,248,0.4);
-    }
+/* BUTTON */
+.btn{
+  margin-top:30px;
+  padding:14px 32px;
+  border-radius:30px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  color:#020617;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 0 30px rgba(56,189,248,0.4);
+  transition:.4s;
+}
+.btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 50px rgba(99,102,241,0.7);
+}
 
-    section {
-      padding: 80px 10%;
-    }
+/* SECTIONS */
+section{
+  padding:90px 10%;
+}
+.card{
+  background:rgba(15,23,42,0.85);
+  backdrop-filter:blur(12px);
+  border-radius:20px;
+  padding:45px;
+  margin-bottom:40px;
+  box-shadow:0 25px 50px rgba(0,0,0,.5);
+  opacity:0;
+  transform:translateY(60px);
+  transition:1s;
+}
+.card.show{
+  opacity:1;
+  transform:translateY(0);
+}
 
-    h2 {
-      font-size: 2.2rem;
-      margin-bottom: 30px;
-    }
+h2{
+  font-size:2.3rem;
+  margin-bottom:20px;
+}
+h2::after{
+  content:'';
+  width:80px;
+  height:4px;
+  background:linear-gradient(90deg,var(--primary),var(--accent));
+  display:block;
+  margin-top:10px;
+  border-radius:10px;
+}
 
-    h2::after {
-      content: '';
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      display: block;
-      margin-top: 10px;
-      border-radius: 10px;
-    }
+/* SKILLS */
+.skills{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:20px;
+}
+.skill{
+  padding:20px;
+  text-align:center;
+  border-radius:16px;
+  background:linear-gradient(135deg,#020617,#1e293b);
+  transition:.4s;
+}
+.skill:hover{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#020617;
+  transform:translateY(-10px) scale(1.05);
+}
 
-    .card {
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      transition: 0.4s;
-    }
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:25px;
+  background:#020617;
+  color:var(--muted);
+}
 
-    .card:hover {
-      transform: translateY(-10px);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-    }
-
-    .skill {
-      padding: 18px;
-      border-radius: 14px;
-      text-align: center;
-      background: linear-gradient(135deg, #020617, #1e293b);
-      transition: 0.4s;
-    }
-
-    .skill:hover {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: #020617;
-      transform: scale(1.08);
-    }
-
-    .project h3 {
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: #020617;
-      color: var(--text-muted);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideDown {
-      from { transform: translateY(-40px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @media (max-width: 768px) {
-      header h1 { font-size: 2.4rem; }
-      section { padding: 60px 6%; }
-    }
-  </style>
+/* MOBILE */
+@media(max-width:768px){
+  h1{font-size:2.4rem}
+  section{padding:70px 6%}
+}
+</style>
 </head>
 
 <body>
 
+<!-- Floating background dots -->
+<div class="bg">
+  <span style="left:10%;animation-duration:18s"></span>
+  <span style="left:30%;animation-duration:22s"></span>
+  <span style="left:50%;animation-duration:25s"></span>
+  <span style="left:70%;animation-duration:20s"></span>
+  <span style="left:90%;animation-duration:26s"></span>
+</div>
+
 <header>
-  <img src="profile.jpg" alt="Suriya Profile Photo" class="profile-pic">
+  <div class="profile-wrap">
+    <img src="profile.jpg" alt="Suriya">
+  </div>
   <h1>Suriya C</h1>
-  <p>Python Developer</p>
-  <a href="#contact" class="btn">Hire Me</a>
+  <div class="type" id="type"></div>
+  <a href="#contact" class="btn">Hire Python Fresher</a>
 </header>
 
 <section>
-  <div class="card">
+  <div class="card reveal">
     <h2>About Me</h2>
     <p>
-      I am a Computer Science graduate passionate about Data Analysis, Python development,
-      and modern web technologies. I enjoy building web applications and solving real-world problems.
+      I am a Python fresher passionate about backend development, data handling,
+      and building real-world applications using Python, Flask, and SQL.
     </p>
   </div>
-</section>
 
-<section>
-  <div class="card">
+  <div class="card reveal">
     <h2>Skills</h2>
-    <div class="skills-grid">
+    <div class="skills">
       <div class="skill">Python</div>
-      <div class="skill">HTML</div>
-      <div class="skill">CSS</div>
+      <div class="skill">Flask</div>
       <div class="skill">SQL</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">MS-Powerpoint</div>
-      <div class="skill">MS-WORD</div>
-      <div class="skill">MS Excel</div>
+      <div class="skill">HTML / CSS / JS</div>
+      <div class="skill">Pandas & NumPy</div>
+      <div class="skill">Power BI</div>
     </div>
   </div>
-</section>
 
-<section>
-  <div class="card project">
+  <div class="card reveal">
     <h2>Project</h2>
-    <h3>Company Profile & HR DB Management System</h3>
-    <p>Secure web application for HR to manage employee and production data.</p>
-    <p><strong>Tech:</strong> HTML, CSS, JS, Flask, SQL</p>
-    <p><strong>Company:</strong> Avon Seals Pvt Ltd, Chennai</p>
+    <p><b>Company Profile & HR DB Management System</b></p>
+    <p>Secure Flask-based web application with employee and production modules.</p>
   </div>
-</section>
 
-<section id="contact">
-  <div class="card">
+  <div class="card reveal" id="contact">
     <h2>Contact</h2>
-    <p><strong>Phone:</strong> 7397306096</p>
-    <p><strong>Email:</strong> suriyachelladurai6@gmail.com</p>
-    <p><strong>Location:</strong> Chennai, India</p>
+    <p>📞 7397306096</p>
+    <p>📧 suriyachelladurai6@gmail.com</p>
+    <p>📍 Chennai, India</p>
   </div>
 </section>
 
 <footer>
-  © 2026 Suriya C | Portfolio
+  © 2026 Suriya C | Animated Python Portfolio
 </footer>
+
+<script>
+/* TYPEWRITER */
+const text=["Python Developer","Backend Fresher","Flask Enthusiast","Problem Solver"];
+let i=0,j=0,del=false;
+const el=document.getElementById("type");
+setInterval(()=>{
+  el.textContent=text[i].slice(0,j);
+  if(!del && j++===text[i].length) del=true;
+  if(del && j--===0){del=false;i=(i+1)%text.length;}
+},120);
+
+/* SCROLL REVEAL */
+const cards=document.querySelectorAll('.card');
+window.addEventListener('scroll',()=>{
+  cards.forEach(c=>{
+    const top=c.getBoundingClientRect().top;
+    if(top<window.innerHeight-100) c.classList.add('show');
+  });
+});
+</script>
 
 </body>
 </html>
-
