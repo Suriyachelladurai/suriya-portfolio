@@ -9,8 +9,7 @@ This is my personal portfolio website showcasing my skills, projects, and experi
 - JavaScript
 - Flask
 - SQL
-- Power BI
-- Tableau
+- Python
 
 ## 📌 Features
 - Responsive & interactive UI
